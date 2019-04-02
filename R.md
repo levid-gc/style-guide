@@ -172,3 +172,53 @@ else
 每一行的结束不需要放置分号，或者使用分号将多个命令放置在同一行。（分号是非必要的，可以将其省略以保持一致性。）
 
 ## 代码组织
+
+### 常见排版及顺序
+
+如果每个人都使用一致的顺序，那么我们就能够更容易地阅读并理解别人地脚本。
+
+1. 版权声明注释
+2. 作者注释
+3. 文件描述注释，包括程序地目的，输入，和输出
+4. `source()` 和 `library()` 声明
+5. 函数定义
+6. 可执行声明（比如，`print`, `plot`）
+
+单元测试应该放置在另一名为 `originalfilename_test.R` 的文件中。
+
+### 注释指南
+
+注释您的代码。整行注释应该以 `#` 及一个空白符开始。
+
+短注释可以放置在代码后，前面为两个空白符，`#`，然后一个空白符。
+
+```R
+# Create histogram of frequency of campaigns by pct budget spent.
+hist(df$pct.spent,
+     breaks = "scott",  # method for choosing number of buckets
+     main   = "Histogram: fraction budget spent by campaignid",
+     xlab   = "Fraction of budget spent",
+     ylab   = "Frequency (count of campaignids)")
+```
+
+### 函数定义及调用
+
+函数定义应该首先列出没有默认值的参数，后面跟上那些具有默认值的参数。
+
+在函数定义和函数调用中，每行多个参数是允许的；仅在赋值之间才可以使用换行。
+
+良好：
+
+```R
+PredictCTR <- function(query, property, num.days,
+                       show.plot = TRUE)
+```
+
+不好：
+
+```R
+PredictCTR <- function(query, property, num.days, show.plot =
+                       TRUE)
+```
+
+理想情况下，单元测试应该作为函数调用的示例（共享类库惯用做法）。

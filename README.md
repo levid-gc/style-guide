@@ -1,2 +1,3 @@
-# styleguide
-编码风格指南
+# 编码风格指南
+
+- [JavaScript 编码指南](./JavaScript.md)
